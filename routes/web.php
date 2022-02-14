@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use \App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +20,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::prefix('mail')->middleware(['auth'])->group(function () {
+    Route::get('/form', [MessageController::class, 'form']);
+    Route::post('/process', [MessageController::class, 'process']);
+});
 
 require __DIR__.'/auth.php';
