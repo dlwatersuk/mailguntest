@@ -35,8 +35,8 @@ class Message extends Mailable
     {
         return $this
             ->subject($this->data['subject'])
-            ->view('view.name', [
-            $this->data['content']
+            ->view('mail.mail', [
+            'content' => $this->data['content']
         ]);
     }
 }
