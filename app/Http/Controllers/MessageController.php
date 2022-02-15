@@ -48,6 +48,6 @@ class MessageController extends Controller
     }
 
     public function all() {
-        return view('messag')
+        return view('mailform.all');
     }
 }
