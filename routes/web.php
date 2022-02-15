@@ -24,6 +24,8 @@ Route::get('/dashboard', function () {
 Route::prefix('mail')->middleware(['auth'])->group(function () {
     Route::get('/form', [MessageController::class, 'form'])->name('mailform');
     Route::post('/process', [MessageController::class, 'process'])->name('mailform.process');
+
+    Route::get('/sent/all', [MessageController::class, 'all'])->name('mailform.sent.all');
 });
 
 require __DIR__.'/auth.php';
