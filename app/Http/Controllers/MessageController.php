@@ -19,7 +19,7 @@ class MessageController extends Controller
     }
 
     public function form() {
-        return view('mailform');
+        return view('mailform.send');
     }
 
     public function process(Request $request) {
@@ -45,5 +45,9 @@ class MessageController extends Controller
         $message->save();
 
         return redirect(route('mailform'));
+    }
+
+    public function all() {
+        return view('messag')
     }
 }
