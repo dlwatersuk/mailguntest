@@ -34,9 +34,9 @@ class Message extends Mailable
     public function build()
     {
         return $this
-            ->subject($this->data->subject)
+            ->subject($this->data['subject'])
             ->view('view.name', [
-            $this->data->content
+            $this->data['content']
         ]);
     }
 }

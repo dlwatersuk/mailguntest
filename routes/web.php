@@ -22,8 +22,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::prefix('mail')->middleware(['auth'])->group(function () {
-    Route::get('/form', [MessageController::class, 'form']);
-    Route::post('/process', [MessageController::class, 'process']);
+    Route::get('/form', [MessageController::class, 'form'])->name('mailform');
+    Route::post('/process', [MessageController::class, 'process'])->name('mailform.process');
 });
 
 require __DIR__.'/auth.php';

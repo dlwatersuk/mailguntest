@@ -10,8 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div>
                     <!-- todo make ajax call instead -->
-                    <form id="mailForm" method="POST" action="{{ route('') }}">
+                    <form id="mailForm" method="POST" action="{{ route('mailform.process') }}">
+                        {{ csrf_field() }}
+                        <div>
+                            <input type="text" name="to" />
+                        </div>
+                        <div>
+                            <input type="text" name="subject" />
+                        </div>
+                        <div>
+                            <textarea name="content"></textarea>
+                        </div>
 
+                        <input type="submit" />
                     </form>
                 </div>
             </div>
