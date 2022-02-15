@@ -12,17 +12,22 @@
                     <!-- todo make ajax call instead -->
                     <form id="mailForm" method="POST" action="{{ route('mailform.process') }}">
                         {{ csrf_field() }}
-                        <div>
-                            <input type="text" name="to" />
+                        <div class="form-group">
+                            <label>Email To</label>
+                            <input type="email" name="to" required="required" />
                         </div>
-                        <div>
-                            <input type="text" name="subject" />
+                        <div class="form-group">
+                            <label>Email Subject</label>
+                            <input type="text" name="subject" required="required" />
                         </div>
-                        <div>
+                        <div class="form-group">
+                            <label>Email Content</label>
                             <textarea name="content"></textarea>
                         </div>
 
-                        <input type="submit" />
+                        <button type="submit" class="">
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
