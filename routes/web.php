@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\MessageController;
+use \App\Http\Controllers\MesssageWebhookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +25,9 @@ Route::get('/dashboard', function () {
 Route::prefix('mail')->middleware(['auth'])->group(function () {
     Route::get('/form', [MessageController::class, 'form'])->name('mailform');
     Route::post('/process', [MessageController::class, 'process'])->name('mailform.process');
-
     Route::get('/sent/all', [MessageController::class, 'all'])->name('mailform.sent.all');
 });
+
+Route::post('/mg-webhook', [MesssageWebhookController::class, 'call'])->name('mailgun.webhook');
 
 require __DIR__.'/auth.php';
