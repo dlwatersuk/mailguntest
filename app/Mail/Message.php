@@ -33,6 +33,15 @@ class Message extends Mailable
      */
     public function build()
     {
+        $this->withSwiftMessage(function ($message) {
+            $messageObj = new \App\Models\Message();
+            $messageObj->to = $this->to[0]['address'];
+            $messageObj->subject = $this->subject;
+            $messageObj->content = $this->data['content'];
+            $messageObj->status = 'pending';
+            $messageObj->mailgun_id = $message->getId();
+            $messageObj->save();
+        });
         return $this
             ->subject($this->data['subject'])
             ->view('mail.mail', [
